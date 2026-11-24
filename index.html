@@ -1,199 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تحميل تطبيق أذاني</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: linear-gradient(145deg, #102d22, #071810);
-      font-family: Tahoma, Arial, sans-serif;
-      color: white;
-      text-align: center;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 430px;
-      padding: 35px 24px;
-      border-radius: 24px;
-      background: #183c2d;
-      border: 1px solid #426b51;
-      box-shadow: 0 15px 40px #0005;
-    }
-
-    .logo {
-      font-size: 65px;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      color: #f3d77b;
-      font-size: 34px;
-      margin: 10px 0;
-    }
-
-    .description {
-      color: #e0eadf;
-      line-height: 1.9;
-      font-size: 16px;
-      margin-bottom: 25px;
-    }
-
-    .download {
-      display: block;
-      width: 100%;
-      padding: 17px;
-      border-radius: 13px;
-      background: #e7c96d;
-      color: #173322;
-      font-size: 19px;
-      font-weight: bold;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .download:active {
-      transform: scale(.98);
-    }
-
-    .counter {
-      margin-top: 25px;
-      padding: 17px;
-      border-radius: 14px;
-      background: #102d22;
-      border: 1px solid #426b51;
-    }
-
-    .counter-title {
-      color: #d9e8d9;
-      font-size: 15px;
-    }
-
-    #downloadCount {
-      display: block;
-      color: #f3d77b;
-      font-size: 32px;
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-    .footer {
-      margin-top: 25px;
-      color: #b9cdbd;
-      font-size: 13px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <main class="card">
-
-    <div class="logo">🕌</div>
-
-    <h1>تطبيق أذاني</h1>
-
-    <p class="description">
-      رفيقك للصلاة والذكر والقرآن الكريم.
-      <br>
-      حمّل التطبيق واستمتع بمميزاته على هاتفك.
-    </p>
-
-    <button class="download" id="downloadBtn">
-      ⬇ تحميل تطبيق أذاني
-    </button>
-
-    <div class="counter">
-      <div class="counter-title">
-        إجمالي مرات الضغط على التحميل
-      </div>
-      <span id="downloadCount">...</span>
-    </div>
-
-    <div class="footer">
-      تطبيق أذاني © جميع الحقوق محفوظة
-    </div>
-
-  </main>
-
-  <script>
-    const counterUrl =
-      "https://countapi.mileshilliard.com/api/v1/";
-
-    const counterKey =
-      "azani_download_clicks_ragab121212_20261124";
-
-    const downloadUrl =
-      "https://www.dropbox.com/scl/fi/joy26oa09kgwmilo5fm0u/app-debug.apk?rlkey=wsnihkvxz8i1ykt1y3z5798uw&st=vbexwxqk&dl=1";
-
-    const countDisplay =
-      document.getElementById("downloadCount");
-
-    const downloadButton =
-      document.getElementById("downloadBtn");
-
-    // عرض العدد الحالي دون زيادته
-    async function loadCount() {
-      try {
-        const response = await fetch(
-          counterUrl + "get/" + counterKey
-        );
-
-        const data = await response.json();
-
-        if (data.value !== undefined) {
-          countDisplay.textContent =
-            Number(data.value).toLocaleString("en-US");
-        } else {
-          countDisplay.textContent = "0";
-        }
-      } catch (error) {
-        countDisplay.textContent = "—";
-      }
-    }
-
-    // زيادة العداد عند الضغط على زر التحميل
-    downloadButton.addEventListener("click", async function () {
-
-      downloadButton.disabled = true;
-      downloadButton.textContent = "جارٍ تجهيز التحميل...";
-
-      try {
-        const response = await fetch(
-          counterUrl + "hit/" + counterKey
-        );
-
-        const data = await response.json();
-
-        if (data.value !== undefined) {
-          countDisplay.textContent =
-            Number(data.value).toLocaleString("en-US");
-        }
-
-      } catch (error) {
-        // لا نمنع التحميل إذا تعطل العداد
-      }
-
-      // فتح رابط تنزيل التطبيق
-      window.location.href = downloadUrl;
-    });
-
-    loadCount();
-  </script>
-
-</body>
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09251b"><meta name="description" content="حمّل تطبيق أذاني لمواقيت الصلاة والقبلة والأذكار والقرآن الكريم.">
+<title>أذاني | رفيقك للصلاة والذكر والقرآن</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:28px 16px;display:grid;place-items:center;background:radial-gradient(circle at top,#1d5039 0,#0b281d 55%,#061810 100%);color:#fff;font-family:Tahoma,Arial,sans-serif}
+.page{width:min(100%,920px);overflow:hidden;border:1px solid #54785e;border-radius:26px;background:#102f23;box-shadow:0 24px 70px #0008}
+.hero{min-height:330px;position:relative;display:flex;align-items:center;padding:38px;background:#09251b url("azani-hero.webp") center/cover no-repeat}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,25,17,.96),rgba(4,25,17,.82) 38%,rgba(4,25,17,.12))}.hero-content{position:relative;z-index:1;max-width:510px}
+.brand{display:flex;align-items:center;gap:13px;margin-bottom:20px}.logo{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(145deg,#f4d984,#bd963e);box-shadow:0 8px 24px #0005}.logo svg{width:42px;height:42px}.brand-name{color:#f5d982;font-size:23px;font-weight:bold}
+h1{margin:0 0 13px;color:#ffdf8b;font-size:clamp(34px,6vw,52px)}.tagline{margin:0;color:#fff;font-size:clamp(17px,3vw,21px);line-height:1.9}
+.body{padding:28px clamp(18px,5vw,42px) 34px;text-align:center}.description{margin:0 auto 24px;max-width:650px;color:#dce9df;line-height:2;font-size:16px}
+.download{display:inline-block;width:min(100%,390px);padding:17px 22px;border-radius:14px;background:linear-gradient(135deg,#f6df91,#d8b85e);color:#173523;font-weight:bold;font-size:19px;text-decoration:none;box-shadow:0 8px 22px #0003;transition:transform .2s}.download:hover{transform:translateY(-2px)}
+.details{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:23px 0 0}.detail{min-width:180px;padding:14px 18px;border-radius:13px;background:#0a261b;border:1px solid #355d43;color:#cfe0d2}.detail strong{display:block;margin-top:7px;color:#f4d982;font-size:19px}
+.counter{margin:24px auto 0;max-width:390px;padding:16px;border-radius:14px;background:#0a261b;border:1px solid #426b51}.counter-label{color:#d9e8d9;font-size:14px}#downloadCount{display:block;color:#f3d77b;font-size:31px;font-weight:bold;margin-top:7px}.footer{margin-top:25px;color:#a9c2af;font-size:13px;line-height:1.9}
+@media(max-width:600px){body{padding:12px}.hero{min-height:300px;padding:25px 20px;background-position:58% center}.hero:before{background:linear-gradient(90deg,rgba(4,25,17,.92),rgba(4,25,17,.62))}.details{gap:9px}.detail{flex:1 1 135px;min-width:0}}
+</style></head><body><main class="page">
+<header class="hero"><div class="hero-content"><div class="brand"><div class="logo" aria-label="شعار أذاني"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11 51V29L32 13L53 29V51H11Z" fill="#17412D"/><path d="M24 51V39C24 34.6 27.6 31 32 31C36.4 31 40 34.6 40 39V51" fill="#F6DF91"/><path d="M7 29L32 9L57 29" stroke="#17412D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 9V4M29 5H35M16 27V16H21V23M43 23V16H48V27" stroke="#17412D" stroke-width="2.5" stroke-linejoin="round"/><path d="M32 18C27 18 25 13 28 10C28 14 31 15 35 13C35 16 34 18 32 18Z" fill="#F6DF91"/></svg></div><div class="brand-name">أذاني</div></div><h1>أذاني</h1><p class="tagline">رفيقك للصلاة والذكر والقرآن الكريم</p></div></header>
+<section class="body"><p class="description">حمّل تطبيق أذاني واستمتع بمواقيت الصلاة والقبلة والأذكار وقراءة القرآن الكريم، واجعل عبادتك أقرب إليك أينما كنت.</p>
+<a class="download" id="downloadBtn" href="https://www.dropbox.com/scl/fi/joy26oa09kgwmilo5fm0u/app-debug.apk?rlkey=wsnihkvxz8i1ykt1y3z5798uw&st=vbexwxqk&dl=1">⬇ تحميل تطبيق أذاني</a>
+<div class="details"><div class="detail">إصدار التطبيق<strong>1.0</strong></div><div class="detail">حجم التطبيق<strong>135.46 ميجابايت</strong></div></div>
+<div class="counter"><div class="counter-label">إجمالي مرات الضغط على التحميل</div><span id="downloadCount">...</span></div>
+<div class="footer">نسأل الله أن يجعله نافعاً ومتقبلاً<br>تطبيق أذاني © جميع الحقوق محفوظة</div></section></main>
+<script>
+const counterUrl="https://countapi.mileshilliard.com/api/v1/";const counterKey="azani_download_clicks_ragab121212_20261124";const countDisplay=document.getElementById("downloadCount");const downloadButton=document.getElementById("downloadBtn");
+async function loadCount(){try{const response=await fetch(counterUrl+"get/"+counterKey);const data=await response.json();countDisplay.textContent=data.value!==undefined?Number(data.value).toLocaleString("en-US"):"0"}catch(error){countDisplay.textContent="—"}}
+downloadButton.addEventListener("click",async function(event){event.preventDefault();const target=downloadButton.href;downloadButton.style.pointerEvents="none";downloadButton.textContent="جارٍ تجهيز التحميل...";try{const response=await fetch(counterUrl+"hit/"+counterKey);const data=await response.json();if(data.value!==undefined)countDisplay.textContent=Number(data.value).toLocaleString("en-US")}catch(error){}window.location.href=target});loadCount();
+</script></body></html>
